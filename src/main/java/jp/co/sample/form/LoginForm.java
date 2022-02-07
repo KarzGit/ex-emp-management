@@ -1,15 +1,15 @@
 package jp.co.sample.form;
 
 public class LoginForm {
-	private String mamilAddress;
+	private String mailAddress;
 	private String password;
 
-	public String getMamilAddress() {
-		return mamilAddress;
+	public String getMailAddress() {
+		return mailAddress;
 	}
 
-	public void setMamilAddress(String mamilAddress) {
-		this.mamilAddress = mamilAddress;
+	public void setMailAddress(String mailAddress) {
+		this.mailAddress = mailAddress;
 	}
 
 	public String getPassword() {
@@ -22,7 +22,7 @@ public class LoginForm {
 
 	@Override
 	public String toString() {
-		return "LoginForm [mamilAddress=" + mamilAddress + ", password=" + password + "]";
+		return "LoginForm [mailAddress=" + mailAddress + ", password=" + password + "]";
 	}
 
 }
