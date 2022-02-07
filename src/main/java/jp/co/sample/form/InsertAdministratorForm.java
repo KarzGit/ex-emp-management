@@ -3,7 +3,7 @@ package jp.co.sample.form;
 public class InsertAdministratorForm {
 	private String name;
 	private String mailAddress;
-	private String pasword;
+	private String password;
 
 	public String getName() {
 		return name;
@@ -21,17 +21,18 @@ public class InsertAdministratorForm {
 		this.mailAddress = mailAddress;
 	}
 
-	public String getPasword() {
-		return pasword;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPasword(String pasword) {
-		this.pasword = pasword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
 	public String toString() {
-		return "InsertAdministratorForm [name=" + name + ", mailAddress=" + mailAddress + ", pasword=" + pasword + "]";
+		return "InsertAdministratorForm [name=" + name + ", mailAddress=" + mailAddress + ", password=" + password
+				+ "]";
 	}
 
 }
