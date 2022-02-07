@@ -1,7 +1,10 @@
 package jp.co.sample.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -37,14 +40,30 @@ public class AdministratorController {
 		return "redirect:/";
 
 	}
-	
+
 	@ModelAttribute
 	private LoginForm setUpLoginForm() {
 		return new LoginForm();
 	}
-	
+
 	@RequestMapping("/")
 	public String toLogin() {
 		return "administrator/login";
+	}
+
+	@Autowired
+	private HttpSession session;
+
+	@RequestMapping("/login")
+	public String login(LoginForm form, Model model) {
+		Administrator logindata = administratorService.login(form.getMailAddress(), form.getPassword());
+
+		if (logindata == null) {
+			model.addAttribute("error", "メールアドレスまたはパスワードが不正です。");
+			return "administrator/login";
+		} else {
+			session.setAttribute("administratorName", logindata.getName());
+			return "forward:/employee/showList";
+		}
 	}
 }
