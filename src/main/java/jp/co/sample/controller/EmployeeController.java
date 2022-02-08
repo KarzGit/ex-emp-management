@@ -1,5 +1,8 @@
 package jp.co.sample.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,6 +46,20 @@ public class EmployeeController {
 		}
 
 		Employee employee = employeeService.showDetail(Integer.parseInt(form.getId()));
+		employee.setName(form.getName());
+		employee.setGender(form.getGender());
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			employee.setHireDate(dateFormat.parse(form.getHireDate()));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		employee.setMailAddress(form.getMailAddress());
+		employee.setZipCode(form.getZipCode());
+		employee.setAddress(form.getAddress());
+		employee.setTelephone(form.getTelephone());
+		employee.setSalary(Integer.parseInt(form.getSalary()));
+		employee.setCharacteristics(form.getCharacteristics());
 		employee.setDependentsCount(Integer.parseInt(form.getDependentsCount()));
 		employeeService.update(employee);
 		return "redirect:/employee/showList";
