@@ -38,7 +38,8 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="list.html" th:href="@{/employee/showList}">従業員管理</a></li>
+						<li class="active"><a href="list.html"
+							th:href="@{/employee/showList}">従業員管理</a></li>
 					</ul>
 					<p class="navbar-text navbar-right">
 						<span th:text="${session.administratorName + 'さん'}">山田さん</span>こんにちは！
@@ -76,9 +77,11 @@
 							<table class="table table-striped">
 								<tr>
 									<th nowrap>従業員名</th>
-									<td><input type="hidden" name="id" th:value="${employee.id}">
-										<input type="text" name="name" id="name"
-										class="form-control" th:value="${employee.name}"></td>
+									<td><input type="hidden" name="id"
+										th:value="${employee.id}">
+										<div th:errors="*{name}" style="color: red">エラー！</div> <input
+										type="text" name="name" id="name" class="form-control"
+										th:value="${employee.name}"></td>
 								</tr>
 								<tr>
 									<th nowrap>写真</th>
@@ -87,52 +90,63 @@
 								<tr>
 									<th nowrap>性別</th>
 									<td>
-										<input type="text" name="gender" id="gender"
-										class="form-control" th:value="${employee.gender}"></td>
+										<div th:errors="*{gender}" style="color: red">エラー！</div> <input
+										type="text" name="gender" id="gender" class="form-control"
+										th:value="${employee.gender}">
+									</td>
 								</tr>
 								<tr>
 									<th nowrap>入社日</th>
 									<td>
-										<input type="text" name="hireDate" id="hireDate"
-										class="form-control" th:value="${employee.hireDate}"></td>
+										<div th:errors="*{hireDate}" style="color: red">エラー！</div> <input
+										type="text" name="hireDate" id="hireDate" class="form-control"
+										th:value="${employee.hireDate}">
+									</td>
 								</tr>
 								<tr>
 									<th nowrap>メールアドレス</th>
-									<td>
-										<input type="text" name="mailAddress" id="mailAddress"
+									<td><input type="text" name="mailAddress" id="mailAddress"
 										class="form-control" th:value="${employee.mailAddress}"></td>
 								</tr>
 								<tr>
 									<th nowrap>郵便番号</th>
 									<td>
-										<input type="text" name="zipCode" id="zipCode"
-										class="form-control" th:value="${employee.zipCode}"></td>
+										<div th:errors="*{zipCode}" style="color: red">エラー！</div> <input
+										type="text" name="zipCode" id="zipCode" class="form-control"
+										th:value="${employee.zipCode}">
+									</td>
 								</tr>
 								<tr>
 									<th nowrap>住所</th>
 									<td>
-										<input type="text" name="address" id="address"
-										class="form-control" th:value="${employee.address}"></td>
+										<div th:errors="*{address}" style="color: red">エラー！</div> <input
+										type="text" name="address" id="address" class="form-control"
+										th:value="${employee.address}">
+									</td>
 								</tr>
 								<tr>
 									<th nowrap>電話番号</th>
 									<td>
-										<input type="text" name="telephone" id="telephone"
+										<div th:errors="*{telephone}" style="color: red">エラー！</div> <input
+										type="text" name="telephone" id="telephone"
 										class="form-control" th:value="${employee.telephone}">
 									</td>
 								</tr>
 								<tr>
 									<th nowrap>給料</th>
 									<td>
-										<input type="text" name="salary" id="salary"
-										class="form-control" th:value="${employee.salary}">
+										<div th:errors="*{salary}" style="color: red">エラー！</div> <input
+										type="text" name="salary" id="salary" class="form-control"
+										th:value="${employee.salary}">
 									</td>
 								</tr>
 								<tr>
 									<th nowrap>特性</th>
 									<td>
-										<textarea  rows="4" cols="40" name="characteristics" id="characteristics"
-										class="form-control" th:text="${employee.characteristics}"></textarea>
+										<div th:errors="*{characteristics}" style="color: red">エラー！</div>
+										<textarea rows="4" cols="40" name="characteristics"
+											id="characteristics" class="form-control"
+											th:text="${employee.characteristics}"></textarea>
 									</td>
 								</tr>
 								<tr>

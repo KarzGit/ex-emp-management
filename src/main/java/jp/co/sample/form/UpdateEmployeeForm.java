@@ -4,14 +4,23 @@ import javax.validation.constraints.NotBlank;
 
 public class UpdateEmployeeForm {
 	private String id;
+	@NotBlank(message = "名前を入力してください")
 	private String name;
+	@NotBlank(message = "性別を入力してください")
 	private String gender;
+	@NotBlank(message = "入社日を入力してください")
 	private String hireDate;
+	@NotBlank(message = "メールアドレスを入力してください")
 	private String mailAddress;
+	@NotBlank(message = "郵便番号を入力してください")
 	private String zipCode;
+	@NotBlank(message = "住所を入力してください")
 	private String address;
+	@NotBlank(message = "電話番号を入力してください")
 	private String telephone;
+	@NotBlank(message = "給料を入力してください")
 	private String salary;
+	@NotBlank(message = "特性を入力してください")
 	private String characteristics;
 	@NotBlank(message = "扶養人数を入力してください")
 	private String dependentsCount;
@@ -111,6 +120,5 @@ public class UpdateEmployeeForm {
 				+ telephone + ", salary=" + salary + ", characteristics=" + characteristics + ", dependentsCount="
 				+ dependentsCount + "]";
 	}
-
 
 }

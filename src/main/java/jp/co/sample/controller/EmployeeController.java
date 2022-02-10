@@ -3,6 +3,8 @@ package jp.co.sample.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +22,16 @@ import jp.co.sample.service.EmployeeService;
 public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
+	
+	@Autowired
+	private HttpSession session;
+
 
 	@RequestMapping("/showList")
 	public String showList(Model model) {
+		if(session.getAttribute("administratorName")==null){
+			return "redirect:/";
+		}
 		model.addAttribute("employeeList", employeeService.showList());
 		return "employee/list";
 	}
@@ -41,6 +50,9 @@ public class EmployeeController {
 
 	@RequestMapping("/update")
 	public String update(@Validated UpdateEmployeeForm form, BindingResult result, String id, Model model) {
+		if(session.getAttribute("administratorName")==null){
+			return "redirect:/";
+		}
 		if (result.hasErrors()) {
 			return showDetail(id, model);
 		}
